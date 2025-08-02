@@ -9,15 +9,17 @@
 :root {
     --primary-color: #2c2c2c;
     --secondary-color: #666;
-    --accent-color: #000;
-    --background-color: #FDF6E3; /* Слоновая кость - основной фон */
-    --light-gray: #F0EAD6; /* Контент - чуть темнее фона */
-    --warm-beige: #E8DCC0; /* Тёплый бежевый для карточек */
-    --border-color: #E0D4B7;
+    --accent-color: #7A8F7A; /* Зелёный акцент как в HAVEN */
+    --dark-accent: #000;
+    --background-color: #ffffff; /* Белый фон как в HAVEN */
+    --light-gray: #f8f9fa; /* Очень светлый серый для секций */
+    --warm-beige: #ffffff; /* Белый для карточек */
+    --border-color: #e9ecef;
     --text-color: #333;
-    --text-light: #666;
+    --text-light: #6c757d;
     
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --font-family-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --font-size-base: 16px;
     --font-size-large: 18px;
     --font-size-small: 14px;
@@ -63,11 +65,15 @@ h1 {
 h2 {
     font-size: clamp(2rem, 4vw, 2.5rem);
     margin-bottom: var(--spacing-lg);
+    font-family: var(--font-family-serif);
+    font-weight: 400;
+    color: var(--dark-accent);
 }
 
 h3 {
     font-size: 1.5rem;
     margin-bottom: var(--spacing-md);
+    color: var(--accent-color);
 }
 
 p {
@@ -78,25 +84,31 @@ p {
 /* Кнопки */
 .btn {
     display: inline-block;
-    padding: var(--spacing-sm) var(--spacing-lg);
+    padding: var(--spacing-md) var(--spacing-xl);
     text-decoration: none;
-    border-radius: var(--border-radius);
+    border-radius: 30px;
     font-weight: 500;
     transition: var(--transition);
     cursor: pointer;
     border: none;
-    font-family: inherit;
-    font-size: var(--font-size-base);
+    font-family: var(--font-family);
+    font-size: var(--font-size-small);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .btn-primary {
     background-color: var(--accent-color);
     color: white;
+    font-weight: 500;
+    padding: 18px 32px;
+    font-size: 14px;
 }
 
 .btn-primary:hover {
-    background-color: var(--primary-color);
+    background-color: #6B7F6B;
     transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(122, 143, 122, 0.3);
 }
 
 /* Навигация */
@@ -105,7 +117,7 @@ p {
     top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(253, 246, 227, 0.95); /* Полупрозрачная слоновая кость */
+    background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     z-index: 1000;
     border-bottom: 1px solid var(--border-color);
@@ -115,15 +127,17 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--spacing-sm) var(--spacing-md);
-    max-width: 1200px;
+    padding: var(--spacing-md) var(--spacing-lg);
+    max-width: 1400px;
     margin: 0 auto;
 }
 
 .nav-logo span {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 500;
-    color: var(--accent-color);
+    color: var(--dark-accent);
+    font-family: var(--font-family-serif);
+    letter-spacing: 1px;
 }
 
 .nav-menu {
@@ -165,43 +179,57 @@ p {
     min-height: 100vh;
     display: flex;
     align-items: center;
+    background-color: var(--background-color);
 }
 
 .hero .container {
     display: grid;
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: 1fr 480px;
     gap: var(--spacing-xxl);
     align-items: center;
-    max-width: 1200px;
+    max-width: 1400px;
+    width: 100%;
+}
+
+.hero-content {
+    max-width: 500px;
 }
 
 .hero-title {
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    font-family: var(--font-family-serif);
+    font-weight: 400;
+    line-height: 1.1;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
 }
 
 .hero-name {
     display: block;
     font-weight: 300;
+    color: var(--text-color);
 }
 
 .hero-surname {
     display: block;
-    font-weight: 500;
+    font-weight: 600;
+    color: var(--dark-accent);
 }
 
 .hero-subtitle {
-    font-size: var(--font-size-large);
-    margin-bottom: var(--spacing-xl);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xxl);
     color: var(--text-light);
+    line-height: 1.5;
+    font-weight: 300;
 }
 
 .hero-image {
     justify-self: end;
-    width: 300px !important;
-    height: 400px !important;
+    width: 480px !important;
+    height: 600px !important;
     overflow: hidden;
-    border-radius: var(--border-radius);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
     position: relative;
     background-color: var(--light-gray);
@@ -261,6 +289,7 @@ img.psychologist-photo {
 /* Секции */
 section {
     padding: var(--spacing-xxl) 0;
+    background-color: var(--background-color);
 }
 
 .about {
@@ -271,6 +300,8 @@ section {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: var(--spacing-xxl);
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .about-description ul, .credentials ul {
@@ -327,6 +358,8 @@ section {
 .service-card h3 {
     color: var(--accent-color);
     margin-bottom: var(--spacing-sm);
+    font-family: var(--font-family-serif);
+    font-weight: 500;
 }
 
 .service-details {
@@ -483,13 +516,21 @@ section {
     .hero .container {
         grid-template-columns: 1fr;
         text-align: center;
+        gap: var(--spacing-xl);
+        max-width: 100%;
+        padding: 0 var(--spacing-md);
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        order: 2;
     }
     
     .hero-image {
         justify-self: center;
-        order: -1;
-        width: 250px !important;
-        height: 300px !important;
+        order: 1;
+        width: 400px !important;
+        height: 480px !important;
     }
     
     .psychologist-photo {
@@ -527,9 +568,26 @@ section {
         padding: calc(80px + var(--spacing-lg)) 0 var(--spacing-lg);
     }
     
+    .hero .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
     .hero-image {
-        width: 200px !important;
-        height: 250px !important;
+        width: 320px !important;
+        height: 400px !important;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .btn-primary {
+        padding: 16px 24px;
+        font-size: 12px;
     }
     
     .psychologist-photo {
@@ -1410,4 +1468,369 @@ a:focus {
     color: var(--text-light);
     font-size: var(--font-size-small);
     font-style: italic;
+} 
+
+.hero-subtitle-large {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-xxl);
+    color: var(--text-color);
+    line-height: 1.2;
+    font-weight: 300;
+    font-family: var(--font-family-serif);
+}
+
+.hero-subtitle-large em {
+    font-style: italic;
+    color: var(--accent-color);
+}
+
+/* Секция "Вы здесь потому что" */
+.reason-section {
+    padding: var(--spacing-xxl) 0;
+    background-color: var(--background-color);
+    text-align: center;
+}
+
+.reason-section h2 {
+    font-size: 2.5rem;
+    font-family: var(--font-family-serif);
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: var(--spacing-xl);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.reason-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Зелёная секция с проблемами */
+.problems-section {
+    padding: var(--spacing-xxl) 0;
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.problems-content {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: var(--spacing-xxl);
+    align-items: center;
+}
+
+.problems-image {
+    border-radius: 20px;
+    overflow: hidden;
+    height: 400px;
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.space-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Fallback если изображение не загрузилось */
+.problems-image:before {
+    content: "📍";
+    font-size: 3rem;
+    color: var(--accent-color);
+    position: absolute;
+    z-index: 1;
+}
+
+.problems-text h2 {
+    font-size: 2.2rem;
+    font-family: var(--font-family-serif);
+    font-weight: 400;
+    margin-bottom: var(--spacing-xl);
+    color: white;
+}
+
+.problems-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.problem-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+}
+
+.arrow {
+    color: white;
+    font-size: 1.2rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.problem-item p {
+    color: white;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Секция о психологе */
+.about-psychologist {
+    padding: var(--spacing-xxl) 0;
+    background-color: var(--background-color);
+}
+
+.about-psychologist .about-content {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: var(--spacing-xxl);
+    align-items: center;
+}
+
+.greeting {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.about-psychologist h2 {
+    font-size: 2.2rem;
+    font-family: var(--font-family-serif);
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: var(--spacing-lg);
+}
+
+.about-psychologist h2 em {
+    font-style: italic;
+    color: var(--accent-color);
+}
+
+.about-psychologist p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+}
+
+.about-actions {
+    margin-top: var(--spacing-xl);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+    padding: 14px 28px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-secondary:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.about-image {
+    justify-self: end;
+}
+
+.about-photo {
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+} 
+
+/* Секция услуг */
+.services-section {
+    padding: var(--spacing-xxl) 0;
+    background-color: var(--background-color);
+}
+
+.services-section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: var(--font-family-serif);
+    font-weight: 400;
+    margin-bottom: var(--spacing-xxl);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    padding: var(--spacing-xl);
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent-color);
+}
+
+.service-card h3 {
+    color: var(--dark-accent);
+    margin-bottom: var(--spacing-md);
+    font-family: var(--font-family-serif);
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.service-card p {
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.service-benefits {
+    list-style: none;
+    margin: 0 0 var(--spacing-lg) 0;
+    padding: 0;
+}
+
+.service-benefits li {
+    padding: var(--spacing-xs) 0;
+    color: var(--text-light);
+    position: relative;
+    padding-left: var(--spacing-md);
+}
+
+.service-benefits li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.service-price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-align: center;
+    padding: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+} 
+
+/* Адаптивность для новых секций */
+@media (max-width: 768px) {
+    .hero-subtitle-large {
+        font-size: 2rem;
+    }
+    
+    .reason-section h2 {
+        font-size: 2rem;
+    }
+    
+    .problems-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+    
+    .problems-image {
+        order: 1;
+        height: 300px;
+        margin: 0 auto;
+        width: 300px;
+    }
+    
+    .problems-text {
+        order: 2;
+    }
+    
+    .about-psychologist .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+    
+    .about-image {
+        order: 1;
+        justify-self: center;
+    }
+    
+    .about-photo {
+        width: 350px;
+        height: 420px;
+    }
+    
+    .about-text {
+        order: 2;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-subtitle-large {
+        font-size: 1.8rem;
+    }
+    
+    .reason-section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .reason-text {
+        font-size: 1rem;
+    }
+    
+    .problems-section {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .problems-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .problems-image {
+        width: 280px;
+        height: 250px;
+    }
+    
+    .about-psychologist h2 {
+        font-size: 1.8rem;
+    }
+    
+    .about-photo {
+        width: 300px;
+        height: 360px;
+    }
+    
+    .service-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .services-section h2 {
+        font-size: 2rem;
+    }
 } 
