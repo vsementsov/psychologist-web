@@ -9,14 +9,15 @@
 :root {
     --primary-color: #2c2c2c;
     --secondary-color: #666;
-    --accent-color: #7A8F7A; /* Зелёный акцент как в HAVEN */
-    --dark-accent: #000;
-    --background-color: #ffffff; /* Белый фон как в HAVEN */
-    --light-gray: #f8f9fa; /* Очень светлый серый для секций */
-    --warm-beige: #ffffff; /* Белый для карточек */
-    --border-color: #e9ecef;
-    --text-color: #333;
-    --text-light: #6c757d;
+    --accent-color: #7B9BCD; /* Голубой акцент как в дизайне */
+    --dark-accent: #2D3748;
+    --background-color: #E8EEF5; /* Светло-голубой фон как в дизайне */
+    --card-background: #ffffff; /* Белый фон карточек */
+    --light-gray: #f8f9fa;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --text-color: #2D3748;
+    --text-light: #718096;
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     --font-family-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
@@ -31,7 +32,7 @@
     --spacing-xl: 48px;
     --spacing-xxl: 64px;
     
-    --border-radius: 8px;
+    --border-radius: 20px;
     --transition: all 0.3s ease;
 }
 
@@ -41,13 +42,53 @@ body {
     font-size: var(--font-size-base);
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--background-color);
+    background-color: var(--card-background);
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
+    padding: 0 var(--spacing-lg);
+}
+
+/* Секции */
+section {
+    padding: var(--spacing-xxl) 0;
+    background-color: var(--card-background);
+    position: relative;
+    overflow: visible;
+}
+
+section:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background-color: var(--accent-color);
+    opacity: 0.3;
+}
+
+/* Убираем стили карточек */
+.card {
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 0;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+    transition: none;
+}
+
+.card:hover {
+    transform: none;
+    box-shadow: none;
 }
 
 /* Типографика */
@@ -55,25 +96,23 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     line-height: 1.2;
     margin-bottom: var(--spacing-sm);
+    color: var(--text-color);
 }
 
 h1 {
     font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 300;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
 }
 
 h2 {
-    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
     margin-bottom: var(--spacing-lg);
-    font-family: var(--font-family-serif);
-    font-weight: 400;
-    color: var(--dark-accent);
 }
 
 h3 {
     font-size: 1.5rem;
     margin-bottom: var(--spacing-md);
-    color: var(--accent-color);
 }
 
 p {
@@ -83,61 +122,65 @@ p {
 
 /* Кнопки */
 .btn {
-    display: inline-block;
-    padding: var(--spacing-md) var(--spacing-xl);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 15px 30px;
     text-decoration: none;
-    border-radius: 30px;
+    border-radius: 50px;
     font-weight: 500;
     transition: var(--transition);
     cursor: pointer;
     border: none;
     font-family: var(--font-family);
-    font-size: var(--font-size-small);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: var(--font-size-base);
 }
 
 .btn-primary {
     background-color: var(--accent-color);
     color: white;
-    font-weight: 500;
-    padding: 18px 32px;
-    font-size: 14px;
 }
 
 .btn-primary:hover {
-    background-color: #6B7F6B;
+    background-color: #6B8BBD;
     transform: translateY(-2px);
-    box-shadow: 0 15px 30px rgba(122, 143, 122, 0.3);
+    box-shadow: 0 10px 25px rgba(123, 155, 205, 0.3);
+}
+
+.btn-primary::after {
+    content: "→";
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: var(--spacing-sm);
 }
 
 /* Навигация */
 .nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: var(--spacing-lg);
+    position: sticky;
+    top: var(--spacing-lg);
     z-index: 1000;
-    border-bottom: 1px solid var(--border-color);
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--spacing-md) var(--spacing-lg);
-    max-width: 1400px;
-    margin: 0 auto;
+    padding: var(--spacing-md) var(--spacing-xl);
 }
 
 .nav-logo span {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--dark-accent);
-    font-family: var(--font-family-serif);
-    letter-spacing: 1px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
 }
 
 .nav-menu {
@@ -147,13 +190,16 @@ p {
 
 .nav-link {
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--text-light);
     font-weight: 400;
     transition: var(--transition);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 10px;
 }
 
 .nav-link:hover {
     color: var(--accent-color);
+    background-color: rgba(123, 155, 205, 0.1);
 }
 
 .nav-toggle {
@@ -168,7 +214,7 @@ p {
 .nav-toggle span {
     width: 25px;
     height: 2px;
-    background-color: var(--accent-color);
+    background-color: var(--text-color);
     margin: 3px 0;
     transition: var(--transition);
 }
@@ -287,13 +333,8 @@ img.psychologist-photo {
 }
 
 /* Секции */
-section {
-    padding: var(--spacing-xxl) 0;
-    background-color: var(--background-color);
-}
 
 .about {
-    background-color: var(--light-gray);
 }
 
 .about-content {
@@ -423,7 +464,28 @@ section {
 
 /* Контакты */
 .contact {
-    background-color: var(--light-gray);
+    position: relative;
+}
+
+.contact h2 {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    font-weight: 400;
+}
+
+.contact-subtitle {
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xxl);
+    font-style: italic;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xxl);
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .contact-info {
@@ -484,13 +546,13 @@ section {
         left: -100%;
         width: 100%;
         height: calc(100vh - 70px);
-        background-color: var(--background-color);
+        background-color: var(--card-background);
         flex-direction: column;
         justify-content: start;
         align-items: center;
         padding-top: var(--spacing-xl);
         transition: var(--transition);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--shadow);
     }
     
     .nav-menu.active {
@@ -512,93 +574,217 @@ section {
     .nav-toggle.active span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -6px);
     }
-    
-    .hero .container {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: var(--spacing-xl);
-        max-width: 100%;
-        padding: 0 var(--spacing-md);
-    }
-    
+
+    /* Hero адаптивность */
     .hero-content {
-        max-width: 100%;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+
+    .hero-text {
         order: 2;
     }
-    
+
     .hero-image {
-        justify-self: center;
         order: 1;
-        width: 400px !important;
-        height: 480px !important;
+        justify-self: center;
     }
-    
+
     .psychologist-photo {
-        width: 100%;
-        height: 100%;
+        width: 300px;
+        height: 380px;
     }
-    
-    .image-placeholder {
-        width: 250px;
-        height: 300px;
+
+    .hero-decoration {
+        width: 150px;
+        height: 150px;
+        bottom: -15px;
+        right: -15px;
     }
-    
+
+    /* Обо мне адаптивность */
     .about-content {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
+        text-align: center;
     }
-    
-    .footer-content {
+
+    .about-image {
+        order: 1;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .about-text {
+        order: 2;
+    }
+
+    .about-photo {
+        height: 420px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    /* Сервисы адаптивность */
+    .services-circles {
+        max-width: 550px;
+    }
+
+    .services-row:first-child {
+        margin-bottom: -30px;
+    }
+
+    .service-circle {
+        width: 200px;
+        height: 200px;
+    }
+
+    .service-circle:not(:first-child) {
+        margin-left: -30px;
+    }
+
+    .service-circle span {
+        font-size: var(--font-size-small);
+        padding: var(--spacing-md);
+    }
+
+    /* Статьи адаптивность */
+    .articles-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    /* Контакты адаптивность */
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .contact-info {
+        order: 2;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-form {
+        order: 1;
+    }
+
+    .contact-footer-content {
         flex-direction: column;
         gap: var(--spacing-md);
         text-align: center;
     }
+
+    .contact-footer-links {
+        text-align: center;
+    }
+
+    .card {
+        padding: var(--spacing-lg);
+    }
 }
 
 @media (max-width: 480px) {
-    .container {
-        padding: 0 var(--spacing-sm);
+    .nav-container {
+        padding: var(--spacing-sm) var(--spacing-md);
     }
-    
-    section {
-        padding: var(--spacing-lg) 0;
+
+    .nav-logo span {
+        font-size: 1rem;
     }
-    
-    .hero {
-        padding: calc(80px + var(--spacing-lg)) 0 var(--spacing-lg);
+
+    .card {
+        padding: var(--spacing-md);
     }
-    
-    .hero .container {
-        padding: 0 var(--spacing-sm);
-    }
-    
-    .hero-image {
-        width: 320px !important;
-        height: 400px !important;
-    }
-    
+
+    /* Hero мобильная версия */
     .hero-title {
         font-size: 2.5rem;
     }
-    
-    .hero-subtitle {
-        font-size: 1.1rem;
-    }
-    
-    .btn-primary {
-        padding: 16px 24px;
-        font-size: 12px;
-    }
-    
+
     .psychologist-photo {
-        width: 100%;
-        height: 100%;
+        width: 250px;
+        height: 320px;
     }
-    
-    .services-grid,
-    .reviews-grid,
-    .contact-info {
-        grid-template-columns: 1fr;
+
+    .hero-decoration {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Обо мне мобильная */
+    .about-text h3 {
+        font-size: 1.4rem;
+    }
+
+    .about-photo {
+        height: 350px;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    /* Сервисы мобильная */
+    .services-circles {
+        max-width: 300px;
+    }
+
+    .services-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .services-row:first-child {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .service-circle {
+        width: 180px;
+        height: 180px;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .service-circle:not(:first-child) {
+        margin-left: 0;
+    }
+
+    .service-circle span {
+        font-size: var(--font-size-small);
+        padding: var(--spacing-sm);
+    }
+
+    /* Кнопки мобильная */
+    .btn {
+        padding: 12px 24px;
+        font-size: var(--font-size-small);
+    }
+
+    .btn-primary::after {
+        width: 25px;
+        height: 25px;
+    }
+
+    /* Форма мобильная */
+    .contact-form input,
+    .contact-form textarea {
+        padding: var(--spacing-sm);
+    }
+
+    /* Контакты мобильная */
+    .contact-decoration {
+        width: 150px;
+        height: 60px;
+    }
+
+    .contact-footer {
+        margin-top: var(--spacing-lg);
+        padding-top: var(--spacing-lg);
     }
 }
 
@@ -1833,4 +2019,643 @@ a:focus {
     .services-section h2 {
         font-size: 2rem;
     }
+} 
+
+/* Hero секция */
+.hero {
+    background-color: var(--card-background);
+    overflow: visible;
+    position: relative;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--spacing-xxl);
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.hero-text {
+    max-width: 500px;
+    padding-right: var(--spacing-lg);
+}
+
+.hero-greeting {
+    color: var(--accent-color);
+    font-size: var(--font-size-large);
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-title {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-color);
+}
+
+.hero-accent {
+    color: var(--accent-color);
+}
+
+.hero-subtitle {
+    font-size: var(--font-size-large);
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.5;
+}
+
+.hero-image {
+    position: relative;
+    justify-self: center;
+}
+
+.psychologist-photo {
+    width: 350px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    position: relative;
+    z-index: 2;
+}
+
+.hero-decoration {
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    width: 150px;
+    height: 150px;
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Декоративная ленточка */
+.ribbon-decoration {
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.ribbon-hero {
+    top: 20%;
+    left: -25%;
+    width: 200%;
+    height: auto;
+    transform: rotate(-15deg);
+    opacity: 0.8;
+}
+
+.ribbon-contact {
+    top: -80px;
+    right: -50px;
+    width: 400px;
+    height: auto;
+    transform: rotate(15deg);
+    opacity: 0.6;
+}
+
+/* Адаптивность ленточек */
+@media (max-width: 768px) {
+    .ribbon-hero {
+        width: 120%;
+        left: -10%;
+        top: 30%;
+        transform: rotate(-10deg);
+    }
+
+    .ribbon-contact {
+        width: 200px;
+        top: -40px;
+        right: 20px;
+        transform: rotate(10deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .ribbon-hero {
+        width: 100%;
+        left: 0%;
+        top: 40%;
+        transform: rotate(-5deg);
+    }
+
+    .ribbon-contact {
+        width: 150px;
+        top: -30px;
+        right: 10px;
+        transform: rotate(5deg);
+    }
+}
+
+/* Hero секция */
+.hero {
+    background-color: var(--card-background);
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--spacing-xxl);
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.hero-text {
+    max-width: 500px;
+    padding-right: var(--spacing-lg);
+}
+
+.hero-greeting {
+    color: var(--accent-color);
+    font-size: var(--font-size-large);
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-title {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-color);
+}
+
+.hero-accent {
+    color: var(--accent-color);
+}
+
+.hero-subtitle {
+    font-size: var(--font-size-large);
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.5;
+}
+
+.hero-image {
+    position: relative;
+    justify-self: center;
+}
+
+.psychologist-photo {
+    width: 350px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    position: relative;
+    z-index: 2;
+}
+
+.hero-decoration {
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    width: 150px;
+    height: 150px;
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Декоративная ленточка */
+.ribbon-decoration {
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.ribbon-hero {
+    top: 20%;
+    left: -25%;
+    width: 200%;
+    height: auto;
+    transform: rotate(-15deg);
+    opacity: 0.8;
+}
+
+.ribbon-contact {
+    top: -80px;
+    right: -50px;
+    width: 400px;
+    height: auto;
+    transform: rotate(15deg);
+    opacity: 0.6;
+}
+
+/* Адаптивность ленточек */
+@media (max-width: 768px) {
+    .ribbon-hero {
+        width: 120%;
+        left: -10%;
+        top: 30%;
+        transform: rotate(-10deg);
+    }
+
+    .ribbon-contact {
+        width: 200px;
+        top: -40px;
+        right: 20px;
+        transform: rotate(10deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .ribbon-hero {
+        width: 100%;
+        left: 0%;
+        top: 40%;
+        transform: rotate(-5deg);
+    }
+
+    .ribbon-contact {
+        width: 150px;
+        top: -30px;
+        right: 10px;
+        transform: rotate(5deg);
+    }
+}
+
+/* Секция "Обо мне" */
+.about h2 {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xl);
+    font-weight: 400;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: var(--spacing-xxl);
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.about-image {
+    position: relative;
+}
+
+.about-photo {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+}
+
+.about-decoration {
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 150px;
+    height: 100px;
+    border: 2px solid var(--accent-color);
+    border-radius: 30px;
+    z-index: 1;
+}
+
+.about-text h3 {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.3;
+}
+
+.about-text p {
+    color: var(--text-light);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xxl);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--accent-color);
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-label {
+    color: var(--text-light);
+    font-size: var(--font-size-small);
+    line-height: 1.3;
+}
+
+/* Секция "С чем я работаю" */
+.services h2 {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    font-weight: 400;
+}
+
+.services-subtitle {
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xxl);
+    font-style: italic;
+}
+
+.services-circles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.services-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.services-row:first-child {
+    margin-bottom: -40px;
+}
+
+.services-row:last-child {
+    z-index: 1;
+}
+
+.service-circle {
+    width: 280px;
+    height: 280px;
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: var(--transition);
+    background-color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    z-index: 1;
+}
+
+.service-circle:not(:first-child) {
+    margin-left: -40px;
+}
+
+.service-circle:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+.service-circle span {
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    line-height: 1.3;
+    padding: var(--spacing-lg);
+}
+
+/* Стоимость услуг */
+.pricing h2 {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xl);
+    font-weight: 400;
+}
+
+.pricing-table {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.pricing-item {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+    transition: var(--transition);
+}
+
+.pricing-item:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+}
+
+.pricing-item h3 {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+}
+
+.pricing-item p {
+    color: var(--text-light);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+}
+
+.pricing-details {
+    display: flex;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.duration, .format {
+    color: var(--text-light);
+    font-size: var(--font-size-small);
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Статьи */
+.articles h2 {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    font-weight: 400;
+}
+
+.articles-subtitle {
+    color: var(--text-light);
+    margin-bottom: var(--spacing-xxl);
+    font-style: italic;
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.article-card {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.article-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: var(--transition);
+}
+
+.article-card:hover .article-image {
+    filter: grayscale(0%);
+}
+
+.article-content {
+    padding: var(--spacing-lg);
+    background-color: var(--light-gray);
+}
+
+.article-content h3 {
+    font-size: var(--font-size-small);
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* Контакты */
+.contact {
+    position: relative;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.contact-email {
+    font-size: var(--font-size-large);
+    color: var(--text-color);
+    margin-bottom: var(--spacing-xl);
+    text-decoration: underline;
+    text-decoration-color: var(--accent-color);
+    text-underline-offset: 8px;
+}
+
+.contact-decoration {
+    width: 200px;
+    height: 100px;
+    border: 2px solid var(--accent-color);
+    border-radius: 50px;
+    margin-top: var(--spacing-xl);
+    opacity: 0.6;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: var(--spacing-md);
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 0;
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    transition: var(--transition);
+    background-color: transparent;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-bottom-color: var(--accent-color);
+}
+
+.contact-form textarea {
+    min-height: 100px;
+    resize: vertical;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.checkbox-group {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: start;
+    margin-top: var(--spacing-md);
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-top: 2px;
+}
+
+.checkbox-group label {
+    font-size: var(--font-size-small);
+    color: var(--text-light);
+    line-height: 1.4;
+    cursor: pointer;
+}
+
+.contact-footer {
+    margin-top: var(--spacing-xxl);
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--border-color);
+}
+
+.contact-footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.contact-footer-info p {
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-light);
+    font-size: var(--font-size-small);
+}
+
+.contact-footer-info p:first-child {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.contact-footer-links {
+    text-align: right;
+}
+
+.contact-footer-links p {
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-light);
+    font-size: var(--font-size-small);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.contact-footer-links p:hover {
+    color: var(--accent-color);
 } 
