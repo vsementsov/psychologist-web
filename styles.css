@@ -197,6 +197,19 @@ p {
     justify-self: end;
 }
 
+.psychologist-photo {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.psychologist-photo:hover {
+    transform: translateY(-5px);
+}
+
 .image-placeholder {
     width: 300px;
     height: 400px;
@@ -441,6 +454,11 @@ section {
         order: -1;
     }
     
+    .psychologist-photo {
+        width: 250px;
+        height: 300px;
+    }
+    
     .image-placeholder {
         width: 250px;
         height: 300px;
@@ -469,6 +487,11 @@ section {
     
     .hero {
         padding: calc(80px + var(--spacing-lg)) 0 var(--spacing-lg);
+    }
+    
+    .psychologist-photo {
+        width: 200px;
+        height: 250px;
     }
     
     .services-grid,
