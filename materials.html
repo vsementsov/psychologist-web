@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бесплатные материалы - Татьяна Семенцова, психолог</title>
+    <meta name="description" content="Бесплатные психологические материалы, упражнения, техники и руководства для самопомощи от практикующего психолога Татьяны Семенцовой.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <span>Татьяна Семенцова</span>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html#about" class="nav-link">Обо мне</a>
+                <a href="index.html#services" class="nav-link">Услуги</a>
+                <a href="materials.html" class="nav-link active">Материалы</a>
+                <a href="index.html#reviews" class="nav-link">Отзывы</a>
+                <a href="index.html#contact" class="nav-link">Контакты</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Заголовок страницы -->
+    <header class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1>Бесплатные материалы</h1>
+                <p>Полезные ресурсы для самопомощи и личностного роста</p>
+                <a href="index.html#appointment" class="btn btn-primary">Записаться на консультацию</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Категории материалов -->
+    <section class="materials-categories">
+        <div class="container">
+            <div class="categories-nav">
+                <button class="category-btn active" data-category="all">Все материалы</button>
+                <button class="category-btn" data-category="anxiety">Тревожность</button>
+                <button class="category-btn" data-category="relationships">Отношения</button>
+                <button class="category-btn" data-category="self-esteem">Самооценка</button>
+                <button class="category-btn" data-category="stress">Стресс</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Материалы -->
+    <section class="materials">
+        <div class="container">
+            <div class="materials-grid">
+                <!-- Материал 1 -->
+                <div class="material-card" data-category="anxiety">
+                    <div class="material-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>5 техник от тревожности</h3>
+                    <p>Простые и эффективные упражнения для быстрого снижения уровня тревоги в стрессовых ситуациях.</p>
+                    <div class="material-meta">
+                        <span class="material-type">PDF · 8 страниц</span>
+                        <span class="material-category">Тревожность</span>
+                    </div>
+                    <button class="btn btn-primary download-btn" data-file="5-anxiety-techniques.pdf">
+                        Скачать бесплатно
+                    </button>
+                </div>
+
+                <!-- Материал 2 -->
+                <div class="material-card" data-category="relationships">
+                    <div class="material-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.84 4.61A5.5 5.5 0 0 0 16 2A5.5 5.5 0 0 0 12 4.61A5.5 5.5 0 0 0 8 2A5.5 5.5 0 0 0 3.16 4.61C1.5 6.27 1.5 8.73 3.16 10.39L12 19.23L20.84 10.39C22.5 8.73 22.5 6.27 20.84 4.61Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Улучшение коммуникации в паре</h3>
+                    <p>Руководство по эффективному общению, активному слушанию и решению конфликтов в отношениях.</p>
+                    <div class="material-meta">
+                        <span class="material-type">PDF · 12 страниц</span>
+                        <span class="material-category">Отношения</span>
+                    </div>
+                    <button class="btn btn-primary download-btn" data-file="couple-communication.pdf">
+                        Скачать бесплатно
+                    </button>
+                </div>
+
+                <!-- Материал 3 -->
+                <div class="material-card" data-category="self-esteem">
+                    <div class="material-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Дневник благодарности</h3>
+                    <p>Шаблон для ведения дневника благодарности с инструкциями по повышению самооценки и позитивного мышления.</p>
+                    <div class="material-meta">
+                        <span class="material-type">PDF · 6 страниц</span>
+                        <span class="material-category">Самооценка</span>
+                    </div>
+                    <button class="btn btn-primary download-btn" data-file="gratitude-journal.pdf">
+                        Скачать бесплатно
+                    </button>
+                </div>
+
+                <!-- Материал 4 -->
+                <div class="material-card" data-category="stress">
+                    <div class="material-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 12A9 9 0 1 0 21 12A9 9 0 1 0 3 12Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 7V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Техники дыхательной релаксации</h3>
+                    <p>Подробное руководство по дыхательным техникам для снятия стресса и восстановления эмоционального равновесия.</p>
+                    <div class="material-meta">
+                        <span class="material-type">PDF · 10 страниц</span>
+                        <span class="material-category">Стресс</span>
+                    </div>
+                    <button class="btn btn-primary download-btn" data-file="breathing-techniques.pdf">
+                        Скачать бесплатно
+                    </button>
+                </div>
+
+                <!-- Материал 5 -->
+                <div class="material-card" data-category="anxiety self-esteem">
+                    <div class="material-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 11H15M9 15H15M17 21L21 17L17 13M7 21L3 17L7 13M14 3V7M10 3V7M16 5H8C6.89543 5 6 5.89543 6 7V19C6 20.1046 6.89543 21 8 21H16C17.1046 21 18 20.1046 18 19V7C18 5.89543 17.1046 5 16 5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Работа с негативными мыслями</h3>
+                    <p>Практические упражнения по выявлению и трансформации деструктивных мыслительных паттернов.</p>
+                    <div class="material-meta">
+                        <span class="material-type">PDF · 14 страниц</span>
+                        <span class="material-category">Тревожность, Самооценка</span>
+                    </div>
+                    <button class="btn btn-primary download-btn" data-file="negative-thoughts.pdf">
+                        Скачать бесплатно
+                    </button>
+                </div>
+
+                <!-- Материал 6 -->
+                <div class="material-card" data-category="relationships">
+                    <div class="material-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88M13 7C13 9.20914 11.2091 11 9 11C6.79086 11 5 9.20914 5 7C5 4.79086 6.79086 3 9 3C11.2091 3 13 4.79086 13 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Установление границ в отношениях</h3>
+                    <p>Как научиться говорить "нет", защищать свои интересы и строить здоровые отношения с окружающими.</p>
+                    <div class="material-meta">
+                        <span class="material-type">PDF · 11 страниц</span>
+                        <span class="material-category">Отношения</span>
+                    </div>
+                    <button class="btn btn-primary download-btn" data-file="healthy-boundaries.pdf">
+                        Скачать бесплатно
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Информация о материалах -->
+    <section class="materials-info">
+        <div class="container">
+            <div class="info-content">
+                <h2>Почему эти материалы полезны?</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h3>Научная основа</h3>
+                        <p>Все материалы основаны на доказанных психологических методах и техниках.</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Практичность</h3>
+                        <p>Простые и понятные упражнения, которые можно применять в повседневной жизни.</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>Доступность</h3>
+                        <p>Все материалы абсолютно бесплатны и доступны для скачивания без регистрации.</p>
+                    </div>
+                </div>
+                <div class="consultation-cta">
+                    <h3>Нужна индивидуальная помощь?</h3>
+                    <p>Материалы для самопомощи — это отличное начало, но иногда нужна персональная поддержка специалиста.</p>
+                    <a href="index.html#appointment" class="btn btn-primary">Записаться на консультацию</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2024 Татьяна Семенцова. Все права защищены.</p>
+                    <p>ИП Семенцова Т.А., ИНН: 000000000000</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Главная</a>
+                    <a href="#appointment">Записаться</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

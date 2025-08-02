@@ -1,0 +1,55 @@
+# Операционные системы
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Редакторы и IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Логи
+*.log
+logs/
+
+# Зависимости
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Временные файлы
+*.tmp
+*.temp
+
+# Резервные копии
+*.bak
+*.backup
+
+# Пользовательские файлы (может содержать персональные данные)
+config.local.js
+.env.local
+
+# Папки для загрузок (если есть)
+uploads/
+temp-files/
+
+# Системные файлы
+.sass-cache/
+.cache/
+
+# Файлы сборки (если будут использоваться)
+dist/
+build/
+
+# Файлы веб-сервера
+.htaccess
+
+# Файлы статистики
+.awcache/ 
