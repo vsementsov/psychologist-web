@@ -5,10 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Татьяна Семенцова - Психолог | Консультации онлайн и очно</title>
     <meta name="description" content="Психологические консультации от опытного специалиста. Индивидуальные сессии, семейная терапия, онлайн консультации.">
+    <meta name="keywords" content="психолог, психологические консультации, семейная терапия, онлайн консультации, индивидуальная терапия, тревожность, депрессия">
+    <meta name="author" content="Татьяна Семенцова">
+    
+    <!-- Open Graph для социальных сетей -->
+    <meta property="og:title" content="Татьяна Семенцова - Психолог | Консультации онлайн и очно">
+    <meta property="og:description" content="Психологические консультации от опытного специалиста. Индивидуальные сессии, семейная терапия, онлайн консультации.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ваш-домен.com/">
+    <meta property="og:image" content="https://ваш-домен.com/images/og-image.jpg">
+    <meta property="og:site_name" content="Татьяна Семенцова - Психолог">
+    <meta property="og:locale" content="ru_RU">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Татьяна Семенцова - Психолог">
+    <meta name="twitter:description" content="Психологические консультации от опытного специалиста.">
+    <meta name="twitter:image" content="https://ваш-домен.com/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Schema.org разметка для психолога -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Татьяна Семенцова",
+        "jobTitle": "Психолог",
+        "description": "Практикующий психолог. Частные консультации онлайн и очно.",
+        "url": "https://ваш-домен.com",
+        "image": "https://ваш-домен.com/images/tatyana-sementsova.jpg",
+        "telephone": "+7-XXX-XXX-XX-XX",
+        "email": "tatyana@example.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "ул. Улица, д. 1, офис 101",
+            "addressLocality": "Город",
+            "addressCountry": "RU"
+        },
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Индивидуальная терапия",
+                "description": "Работа с личными проблемами, тревогой, депрессией, самооценкой и жизненными кризисами.",
+                "price": "3000",
+                "priceCurrency": "RUB"
+            },
+            {
+                "@type": "Offer", 
+                "name": "Семейная терапия",
+                "description": "Работа с парами и семьями для решения конфликтов и улучшения отношений.",
+                "price": "4000",
+                "priceCurrency": "RUB"
+            },
+            {
+                "@type": "Offer",
+                "name": "Онлайн консультации", 
+                "description": "Удобный формат для тех, кто не может приехать лично или живет в другом городе.",
+                "price": "2500",
+                "priceCurrency": "RUB"
+            }
+        ],
+        "sameAs": [
+            "https://t.me/ваш_telegram",
+            "https://vk.com/ваша_страница",
+            "https://instagram.com/ваш_профиль"
+        ]
+    }
+    </script>
+    
+    <!-- Schema.org разметка для организации -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Психологические консультации Татьяны Семенцовой",
+        "description": "Индивидуальные и семейные психологические консультации онлайн и очно",
+        "url": "https://ваш-домен.com",
+        "telephone": "+7-XXX-XXX-XX-XX",
+        "email": "tatyana@example.com",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "ул. Улица, д. 1, офис 101",
+            "addressLocality": "Город",
+            "addressCountry": "RU"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "55.7558",
+            "longitude": "37.6176"
+        },
+        "openingHours": "Mo-Fr 10:00-20:00",
+        "priceRange": "2500-4000 RUB",
+        "serviceArea": {
+            "@type": "Country",
+            "name": "Россия"
+        }
+    }
+    </script>
+    
+    <!-- Google Analytics (замените GA_MEASUREMENT_ID на ваш ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    
+    <!-- Yandex.Metrica (замените XXXXXX на ваш ID) -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        
+        ym(XXXXXX, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 </head>
 <body>
     <!-- Навигация -->
@@ -46,7 +171,7 @@
                     онлайн и очно
                 </p>
                 <div class="hero-actions">
-                    <a href="#appointment" class="btn btn-primary">Записаться на консультацию</a>
+                    <a href="booking-system.html" class="btn btn-primary">Записаться на консультацию</a>
                 </div>
             </div>
             <div class="hero-image">
@@ -146,21 +271,26 @@
     <section id="appointment" class="appointment">
         <div class="container">
             <h2>Записаться на консультацию</h2>
-            <p>Заполните форму ниже, и я свяжусь с вами для уточнения деталей и записи на удобное время.</p>
+            <p>Выберите удобное время для встречи в нашей современной системе записи</p>
             
-            <!-- Здесь будет форма Tally.so -->
-            <div class="form-container">
-                <iframe 
-                    data-tally-src="https://tally.so/embed/w5Q8P9?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
-                    loading="lazy" 
-                    width="100%" 
-                    height="400" 
-                    frameborder="0" 
-                    marginheight="0" 
-                    marginwidth="0" 
-                    title="Запись на консультацию">
-                </iframe>
-                <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.head.appendChild(s);}</script>
+            <div class="appointment-features">
+                <div class="feature">
+                    <h3>🗓 Удобный календарь</h3>
+                    <p>Выбирайте из доступных дат и времени</p>
+                </div>
+                <div class="feature">
+                    <h3>⏰ Реальное время</h3>
+                    <p>Слоты обновляются автоматически</p>
+                </div>
+                <div class="feature">
+                    <h3>📱 Напоминания</h3>
+                    <p>Добавьте встречу в свой календарь</p>
+                </div>
+            </div>
+            
+            <div class="appointment-action">
+                <a href="booking-system.html" class="btn btn-primary btn-large">Выбрать время записи</a>
+                <p class="appointment-note">Процесс записи займет не более 3 минут</p>
             </div>
         </div>
     </section>
@@ -240,7 +370,7 @@
                 </div>
                 <div class="footer-links">
                     <a href="materials.html">Бесплатные материалы</a>
-                    <a href="#appointment">Записаться</a>
+                    <a href="booking-system.html">Записаться</a>
                 </div>
             </div>
         </div>

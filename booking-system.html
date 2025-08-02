@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись на консультацию - Татьяна Семенцова</title>
+    <meta name="description" content="Выберите удобное время для консультации с психологом Татьяной Семенцовой">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="text-decoration: none; color: inherit;">
+                    <span>Татьяна Семенцова</span>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html#about" class="nav-link">Обо мне</a>
+                <a href="index.html#services" class="nav-link">Услуги</a>
+                <a href="materials.html" class="nav-link">Материалы</a>
+                <a href="index.html#reviews" class="nav-link">Отзывы</a>
+                <a href="index.html#contact" class="nav-link">Контакты</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Заголовок страницы -->
+    <header class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1>Записаться на консультацию</h1>
+                <p>Выберите удобное время для встречи</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Система записи -->
+    <section class="booking-system">
+        <div class="container">
+            <div class="booking-container">
+                
+                <!-- Шаг 1: Выбор типа консультации -->
+                <div class="booking-step active" id="step-service">
+                    <h2>Выберите тип консультации</h2>
+                    <div class="services-selection">
+                        <div class="service-option" data-service="individual" data-duration="50" data-price="3000">
+                            <div class="service-info">
+                                <h3>Индивидуальная терапия</h3>
+                                <p>Работа с личными проблемами, тревогой, депрессией</p>
+                                <div class="service-meta">
+                                    <span class="duration">50 минут</span>
+                                    <span class="price">3000 ₽</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="service-option" data-service="family" data-duration="60" data-price="4000">
+                            <div class="service-info">
+                                <h3>Семейная терапия</h3>
+                                <p>Работа с парами и семьями</p>
+                                <div class="service-meta">
+                                    <span class="duration">60 минут</span>
+                                    <span class="price">4000 ₽</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="service-option" data-service="online" data-duration="50" data-price="2500">
+                            <div class="service-info">
+                                <h3>Онлайн консультация</h3>
+                                <p>Удобный формат для удаленной работы</p>
+                                <div class="service-meta">
+                                    <span class="duration">50 минут</span>
+                                    <span class="price">2500 ₽</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="continue-to-calendar" disabled>Продолжить</button>
+                </div>
+
+                <!-- Шаг 2: Выбор даты и времени -->
+                <div class="booking-step" id="step-calendar">
+                    <div class="step-header">
+                        <button class="btn-back" id="back-to-service">← Назад</button>
+                        <h2>Выберите дату и время</h2>
+                    </div>
+                    
+                    <div class="calendar-container">
+                        <!-- Календарь дат -->
+                        <div class="date-picker">
+                            <div class="calendar-header">
+                                <button class="calendar-nav" id="prev-month">‹</button>
+                                <h3 id="current-month">Август 2024</h3>
+                                <button class="calendar-nav" id="next-month">›</button>
+                            </div>
+                            <div class="calendar-grid" id="calendar-grid">
+                                <!-- Дни календаря будут здесь -->
+                            </div>
+                        </div>
+                        
+                        <!-- Временные слоты -->
+                        <div class="time-slots">
+                            <h3>Доступное время</h3>
+                            <div class="slots-container" id="time-slots">
+                                <p class="no-slots">Выберите дату для просмотра доступного времени</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary" id="continue-to-form" disabled>Продолжить</button>
+                </div>
+
+                <!-- Шаг 3: Заполнение формы -->
+                <div class="booking-step" id="step-form">
+                    <div class="step-header">
+                        <button class="btn-back" id="back-to-calendar">← Назад</button>
+                        <h2>Контактная информация</h2>
+                    </div>
+                    
+                    <div class="booking-summary">
+                        <h3>Детали записи:</h3>
+                        <div class="summary-item">
+                            <span class="label">Услуга:</span>
+                            <span id="summary-service">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Дата и время:</span>
+                            <span id="summary-datetime">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Стоимость:</span>
+                            <span id="summary-price">-</span>
+                        </div>
+                    </div>
+                    
+                    <form class="booking-form" id="booking-form">
+                        <div class="form-group">
+                            <label for="client-name">Ваше имя *</label>
+                            <input type="text" id="client-name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="client-phone">Телефон *</label>
+                            <input type="tel" id="client-phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="client-email">Email</label>
+                            <input type="email" id="client-email" name="email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="client-message">Краткое описание запроса (опционально)</label>
+                            <textarea id="client-message" name="message" rows="4" maxlength="500"></textarea>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="privacy-consent" required>
+                            <label for="privacy-consent">
+                                Согласен на обработку персональных данных *
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-large" id="submit-booking">
+                            Подтвердить запись
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Шаг 4: Подтверждение -->
+                <div class="booking-step" id="step-confirmation">
+                    <div class="confirmation-content">
+                        <div class="success-icon">✓</div>
+                        <h2>Запись успешно создана!</h2>
+                        <p>Спасибо за доверие. Я свяжусь с вами в ближайшее время для подтверждения.</p>
+                        
+                        <div class="confirmation-details">
+                            <h3>Детали вашей записи:</h3>
+                            <div id="final-booking-details"></div>
+                        </div>
+                        
+                        <div class="confirmation-actions">
+                            <button class="btn btn-secondary" onclick="window.location.href='index.html'">
+                                Вернуться на главную
+                            </button>
+                            <button class="btn btn-primary" id="add-to-calendar">
+                                Добавить в календарь
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Лоадер -->
+    <div class="loader" id="booking-loader" style="display: none;">
+        <div class="spinner"></div>
+        <p>Обработка записи...</p>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2024 Татьяна Семенцова. Все права защищены.</p>
+                    <p>ИП Семенцова Т.А., ИНН: 000000000000</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Главная</a>
+                    <a href="materials.html">Материалы</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="booking.js"></script>
+</body>
+</html> 

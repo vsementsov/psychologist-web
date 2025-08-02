@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Основные страницы
+Allow: /index.html
+Allow: /materials.html
+
+# Статические ресурсы
+Allow: /styles.css
+Allow: /script.js
+Allow: /images/
+Allow: /materials/
+
+# Запретить служебные файлы
+Disallow: /.git/
+Disallow: /*.md$
+Disallow: /telegram-setup.md
+
+# Sitemap
+Sitemap: https://ваш-домен.com/sitemap.xml
+
+# Настройки для Google
+User-agent: Googlebot
+Allow: /
+
+# Настройки для Yandex
+User-agent: YandexBot
+Allow: /
+
+# Время задержки между запросами (в секундах)
+Crawl-delay: 1 

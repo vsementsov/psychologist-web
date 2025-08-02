@@ -78,6 +78,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         card.style.display = 'none';
                     }
                 });
+                
+                // Аналитика: отслеживание фильтрации материалов
+                trackEvent('filter_materials', 'materials', category);
             });
         });
     }
@@ -91,14 +94,146 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             const fileName = this.getAttribute('data-file');
             
-            // Здесь будет логика скачивания файла
-            // Пока показываем уведомление
+            // Показываем уведомление
             showNotification(`Скачивание файла "${fileName}" начнется автоматически`, 'info');
+            
+            // Аналитика: отслеживание скачивания
+            trackEvent('file_download', 'engagement', fileName);
             
             // В реальном проекте здесь будет:
             // window.open(`/materials/${fileName}`, '_blank');
         });
     });
+});
+
+// Отслеживание аналитических событий
+function trackEvent(eventName, category, label) {
+    // Google Analytics 4
+    if (typeof gtag !== 'undefined') {
+        gtag('event', eventName, {
+            'event_category': category,
+            'event_label': label,
+            'custom_parameter': window.location.pathname
+        });
+    }
+    
+    // Yandex.Metrica (замените XXXXXX на ваш номер счетчика)
+    if (typeof ym !== 'undefined') {
+        ym(XXXXXX, 'reachGoal', eventName, {
+            category: category,
+            label: label
+        });
+    }
+    
+    // Отладка в консоли (удалить в продакшене)
+    console.log(`Analytics Event: ${eventName}, Category: ${category}, Label: ${label}`);
+}
+
+// Отслеживание кликов по важным элементам
+document.addEventListener('DOMContentLoaded', function() {
+    // Кнопки записи на консультацию
+    document.querySelectorAll('[href="#appointment"], .btn-primary').forEach(button => {
+        button.addEventListener('click', function() {
+            const buttonText = this.textContent.trim();
+            trackEvent('click_appointment', 'conversion', buttonText);
+        });
+    });
+    
+    // Клики по телефону
+    document.querySelectorAll('[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            const phoneNumber = this.getAttribute('href').replace('tel:', '');
+            trackEvent('phone_call', 'contact', phoneNumber);
+        });
+    });
+    
+    // Клики по email
+    document.querySelectorAll('[href^="mailto:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            const email = this.getAttribute('href').replace('mailto:', '');
+            trackEvent('email_click', 'contact', email);
+        });
+    });
+    
+    // Клики по социальным сетям
+    document.querySelectorAll('[href*="t.me"], [href*="vk.com"], [href*="instagram"], [href*="telegram"]').forEach(link => {
+        link.addEventListener('click', function() {
+            const social = this.getAttribute('href');
+            let platform = 'unknown';
+            if (social.includes('t.me') || social.includes('telegram')) platform = 'telegram';
+            else if (social.includes('vk.com')) platform = 'vkontakte';
+            else if (social.includes('instagram')) platform = 'instagram';
+            
+            trackEvent('social_click', 'social', platform);
+        });
+    });
+    
+    // Переходы между страницами
+    document.querySelectorAll('a[href="materials.html"]').forEach(link => {
+        link.addEventListener('click', function() {
+            trackEvent('page_visit', 'navigation', 'materials');
+        });
+    });
+    
+    document.querySelectorAll('a[href="index.html"], a[href="/"]').forEach(link => {
+        link.addEventListener('click', function() {
+            trackEvent('page_visit', 'navigation', 'home');
+        });
+    });
+});
+
+// Отслеживание времени на странице
+let pageStartTime = Date.now();
+let timeTracked = false;
+
+// Отправляем событие после 30 секунд на странице
+setTimeout(() => {
+    if (!timeTracked) {
+        trackEvent('engaged_user', 'engagement', '30_seconds');
+        timeTracked = true;
+    }
+}, 30000);
+
+// Отслеживание глубины скролла
+let maxScroll = 0;
+let scrollTracked = {
+    '25': false,
+    '50': false,
+    '75': false,
+    '100': false
+};
+
+window.addEventListener('scroll', function() {
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrolled = window.scrollY;
+    const scrollPercent = Math.round((scrolled / scrollHeight) * 100);
+    
+    maxScroll = Math.max(maxScroll, scrollPercent);
+    
+    // Отслеживаем ключевые точки скролла
+    Object.keys(scrollTracked).forEach(threshold => {
+        if (maxScroll >= parseInt(threshold) && !scrollTracked[threshold]) {
+            trackEvent('scroll_depth', 'engagement', `${threshold}_percent`);
+            scrollTracked[threshold] = true;
+        }
+    });
+});
+
+// Отслеживание ухода со страницы
+window.addEventListener('beforeunload', function() {
+    const timeOnPage = Math.round((Date.now() - pageStartTime) / 1000);
+    
+    if (timeOnPage > 10) { // Только если пользователь был на странице больше 10 секунд
+        // Используем sendBeacon для надежной отправки
+        if (navigator.sendBeacon && typeof gtag !== 'undefined') {
+            gtag('event', 'page_timing', {
+                'event_category': 'engagement',
+                'event_label': 'time_on_page',
+                'value': timeOnPage,
+                'custom_parameter_1': maxScroll
+            });
+        }
+    }
 });
 
 // Система уведомлений
@@ -146,12 +281,19 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
+                
+                // Отслеживаем просмотр секций
+                const sectionName = entry.target.id || entry.target.className.split(' ')[0];
+                if (sectionName && !entry.target.dataset.tracked) {
+                    trackEvent('section_view', 'engagement', sectionName);
+                    entry.target.dataset.tracked = 'true';
+                }
             }
         });
     }, observerOptions);
     
     // Наблюдаем за элементами
-    const animatedElements = document.querySelectorAll('.service-card, .review, .contact-item, .material-card, .info-item');
+    const animatedElements = document.querySelectorAll('.service-card, .review, .contact-item, .material-card, .info-item, section');
     animatedElements.forEach(el => {
         observer.observe(el);
     });
@@ -256,9 +398,15 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             if (validateForm(form)) {
+                // Отслеживаем успешную отправку формы
+                trackEvent('form_submit', 'conversion', 'contact_form');
+                
                 // Здесь будет отправка данных на сервер
                 showNotification('Сообщение отправлено! Мы свяжемся с вами в ближайшее время.', 'success');
                 form.reset();
+            } else {
+                // Отслеживаем ошибки валидации
+                trackEvent('form_error', 'engagement', 'validation_failed');
             }
         });
     });
