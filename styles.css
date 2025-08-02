@@ -10,9 +10,10 @@
     --primary-color: #2c2c2c;
     --secondary-color: #666;
     --accent-color: #000;
-    --background-color: #ffffff;
-    --light-gray: #f8f8f8;
-    --border-color: #e0e0e0;
+    --background-color: #FDF6E3; /* Слоновая кость - основной фон */
+    --light-gray: #F0EAD6; /* Контент - чуть темнее фона */
+    --warm-beige: #E8DCC0; /* Тёплый бежевый для карточек */
+    --border-color: #E0D4B7;
     --text-color: #333;
     --text-light: #666;
     
@@ -104,7 +105,7 @@ p {
     top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(253, 246, 227, 0.95); /* Полупрозрачная слоновая кость */
     backdrop-filter: blur(10px);
     z-index: 1000;
     border-bottom: 1px solid var(--border-color);
@@ -289,7 +290,7 @@ section {
 
 .principle {
     padding: var(--spacing-md);
-    background-color: white;
+    background-color: var(--warm-beige);
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
 }
@@ -312,7 +313,7 @@ section {
 
 .service-card {
     padding: var(--spacing-lg);
-    background-color: white;
+    background-color: var(--warm-beige);
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
     transition: var(--transition);
@@ -356,7 +357,7 @@ section {
 .form-container {
     max-width: 600px;
     margin: var(--spacing-xl) auto 0;
-    background-color: white;
+    background-color: var(--warm-beige);
     border-radius: var(--border-radius);
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -400,7 +401,7 @@ section {
 
 .contact-item {
     padding: var(--spacing-md);
-    background-color: white;
+    background-color: var(--warm-beige);
     border-radius: var(--border-radius);
 }
 
@@ -450,7 +451,7 @@ section {
         left: -100%;
         width: 100%;
         height: calc(100vh - 70px);
-        background-color: white;
+        background-color: var(--background-color);
         flex-direction: column;
         justify-content: start;
         align-items: center;
@@ -616,7 +617,7 @@ a:focus {
 /* Категории материалов */
 .materials-categories {
     padding: var(--spacing-lg) 0;
-    background-color: white;
+    background-color: var(--background-color);
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -658,7 +659,7 @@ a:focus {
 }
 
 .material-card {
-    background-color: white;
+    background-color: var(--warm-beige);
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
     padding: var(--spacing-lg);
@@ -733,7 +734,7 @@ a:focus {
 }
 
 .info-item {
-    background-color: white;
+    background-color: var(--warm-beige);
     padding: var(--spacing-lg);
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
@@ -745,7 +746,7 @@ a:focus {
 }
 
 .consultation-cta {
-    background-color: white;
+    background-color: var(--warm-beige);
     padding: var(--spacing-xl);
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
@@ -778,7 +779,7 @@ a:focus {
 }
 
 .notification {
-    background-color: white;
+    background-color: var(--warm-beige);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     padding: var(--spacing-md);
@@ -979,7 +980,7 @@ a:focus {
     padding: var(--spacing-lg);
     cursor: pointer;
     transition: var(--transition);
-    background: white;
+    background: var(--warm-beige);
 }
 
 .service-option:hover {
@@ -1023,7 +1024,7 @@ a:focus {
 }
 
 .date-picker {
-    background: white;
+    background: var(--warm-beige);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     padding: var(--spacing-lg);
@@ -1095,7 +1096,7 @@ a:focus {
 
 /* Временные слоты */
 .time-slots {
-    background: white;
+    background: var(--warm-beige);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     padding: var(--spacing-lg);
@@ -1118,7 +1119,7 @@ a:focus {
     text-align: center;
     cursor: pointer;
     transition: var(--transition);
-    background: white;
+    background: var(--warm-beige);
     font-size: var(--font-size-small);
 }
 
@@ -1177,7 +1178,7 @@ a:focus {
 
 /* Форма записи */
 .booking-form {
-    background: white;
+    background: var(--warm-beige);
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     padding: var(--spacing-xl);
@@ -1238,7 +1239,7 @@ a:focus {
 .confirmation-content {
     text-align: center;
     padding: var(--spacing-xxl);
-    background: white;
+    background: var(--warm-beige);
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
 }
@@ -1377,7 +1378,7 @@ a:focus {
 .feature {
     text-align: center;
     padding: var(--spacing-lg);
-    background: white;
+    background: var(--warm-beige);
     border-radius: var(--border-radius);
     border: 1px solid var(--border-color);
     transition: var(--transition);
