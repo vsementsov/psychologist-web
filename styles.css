@@ -635,7 +635,7 @@ img.psychologist-photo {
     }
 
     .services-row:first-child {
-        margin-bottom: -30px;
+        margin-bottom: -15px;
     }
 
     .service-circle {
@@ -644,7 +644,7 @@ img.psychologist-photo {
     }
 
     .service-circle:not(:first-child) {
-        margin-left: -30px;
+        margin-left: -15px;
     }
 
     .service-circle span {
@@ -2383,7 +2383,7 @@ a:focus {
 }
 
 .services-row:first-child {
-    margin-bottom: -40px;
+    margin-bottom: -20px;
 }
 
 .services-row:last-child {
@@ -2406,7 +2406,7 @@ a:focus {
 }
 
 .service-circle:not(:first-child) {
-    margin-left: -40px;
+    margin-left: -20px;
 }
 
 .service-circle:hover {
